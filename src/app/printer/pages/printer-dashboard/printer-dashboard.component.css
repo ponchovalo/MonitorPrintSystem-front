@@ -1,0 +1,48 @@
+.test {
+    width: 32rem;
+}
+
+
+/* ---------------------------------- */
+/* Estilo contadores */
+.content-contadores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-contador {
+    padding: 1px;
+    display: flex;
+    width: 7.25rem;
+    height: 2.25rem;
+    border: 1px, solid, #94d5dd;
+    border-radius: 0.5rem;
+}
+.contador-icono {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #94d5dd;
+    background-color: #32757c;
+    border-radius: 0.5rem;
+}
+.contador-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #32757c;
+    align-items: center;
+    height: 100%;
+    width: 70%;
+    align-items: center;
+}
+/* ----------------------------------- */
+
+.fila-dato {
+    margin-bottom: 7px;
+}
+.seccion-datos {
+    border: 1px, solid, red;
+}
