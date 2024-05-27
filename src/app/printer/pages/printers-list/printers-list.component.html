@@ -1,0 +1,24 @@
+
+<p-panel>
+  <ng-template pTemplate="header">
+    <div class="flex align-items-center justify-content-between flex-wrap gap-4 " [style]="{width:'100%'}">
+      <div class="flex align-items-center gap-2">
+        <span class="font-bold">
+            Inventario Impresoras
+        </span>
+      </div>
+      <div class="flex align-items-center gap-2">
+          <p-button icon="pi pi-plus" rounded="true" outlined="true" label="Nuevo" severity="primary"/>
+      </div>
+    </div>
+  </ng-template>
+
+  <app-table [columnTitles]="columnTitles"></app-table>
+
+</p-panel>
+
+<div class="container-dialog">
+  <printer-panel></printer-panel>
+</div>
+
+

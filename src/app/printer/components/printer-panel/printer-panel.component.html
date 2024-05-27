@@ -1,0 +1,65 @@
+<p-panel>
+  <ng-template pTemplate="header">
+      <div class="flex align-items-center gap-2">
+          <span class="font-bold">
+              Nueva Impresora
+          </span>
+      </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="flex flex-wrap align-items-center justify-content-end gap-4">
+        <div class="flex align-items-center gap-4">
+            <p-button icon="pi pi-check" rounded="true" outlined="true" label="Guardar" severity="primary"/>
+            <p-button icon="pi pi-times" rounded="true" outlined="true" label="Cancelar" severity="danger"/>
+        </div>
+    </div>
+  </ng-template>
+
+  <form action="">
+    <div class="flex flex-wrap justify-content-center my-4 mx-1 gap-2">
+      <span class="my-2" style="width: 81%">
+        <p-floatLabel>
+          <input pInputText id="name" [style]="{'minWidth':'100%'}"/>
+          <label for="name">Nombre</label>
+        </p-floatLabel>
+      </span>
+      <span class="my-2" style="width: 40%">
+        <p-dropdown
+          [style]="{'minWidth':'100%'}"
+          class="my-2"
+          optionLabel="name"
+          placeholder="Modelo" />
+      </span>
+      <span class="my-2" style="width: 40%">
+        <p-floatLabel>
+          <input pInputText id="name" [style]="{'minWidth':'100%'}"/>
+          <label for="name">Serie</label>
+        </p-floatLabel>
+      </span>
+      <span class="my-2" style="width: 40%">
+        <p-floatLabel>
+          <input pInputText id="name" [style]="{'minWidth':'100%'}"/>
+          <label for="name">Ip</label>
+        </p-floatLabel>
+      </span>
+      <span class="my-2" style="width: 40%">
+        <p-floatLabel>
+          <input pInputText id="name" [style]="{'minWidth':'100%'}"/>
+          <label for="name">Mac</label>
+        </p-floatLabel>
+      </span>
+      <span class="my-2" style="width: 40%">
+        <p-floatLabel>
+          <input pInputText id="name" [style]="{'minWidth':'100%'}"/>
+          <label for="name">Edificio</label>
+        </p-floatLabel>
+      </span>
+      <span class="my-2" style="width: 40%">
+        <p-floatLabel>
+          <input pInputText id="name" [style]="{'minWidth':'100%'}"/>
+          <label for="name">Ubicacion</label>
+        </p-floatLabel>
+      </span>
+    </div>
+  </form>
+</p-panel>

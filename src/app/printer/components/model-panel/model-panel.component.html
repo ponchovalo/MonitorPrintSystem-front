@@ -1,0 +1,62 @@
+<p-panel>
+  <ng-template pTemplate="header">
+      <div class="flex align-items-center gap-2">
+          <span class="font-bold">
+              Nuevo Modelo
+          </span>
+      </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="flex flex-wrap align-items-center justify-content-end gap-4">
+        <div class="flex align-items-center gap-4">
+            <p-button icon="pi pi-check" rounded="true" outlined="true" label="Guardar" severity="primary"/>
+            <p-button icon="pi pi-times" rounded="true" outlined="true" label="Cancelar" severity="danger"/>
+        </div>
+    </div>
+  </ng-template>
+
+  <form >
+    <div class="flex flex-wrap justify-content-center my-4 mx-1 gap-2">
+      <span class="my-2" style="width: 100%">
+        <p-floatLabel>
+          <input pInputText id="brand" [style]="{'minWidth':'100%'}"/>
+          <label for="brand">Marca</label>
+        </p-floatLabel>
+      </span>
+      <span class="my-2" style="width: 100%">
+        <p-floatLabel>
+          <input pInputText id="model" [style]="{'minWidth':'100%'}"/>
+          <label for="model">Modelo</label>
+        </p-floatLabel>
+      </span>
+      <div class="flex flex-wrap gap-3">
+        <div class="flex align-items-center">
+            <p-radioButton
+                name="type"
+                value="monocromatico"
+                inputId="ingredient1" />
+            <label for="ingredient1" class="ml-2">
+                Blanco y Negro
+            </label>
+        </div>
+
+        <div class="flex align-items-center">
+            <p-radioButton
+                name="type"
+                value="color"
+                inputId="ingredient2" />
+            <label for="ingredient2" class="ml-2">
+                Color
+            </label>
+        </div>
+      </div>
+      <span class="my-2" style="width: 100%">
+        <label for="">Oids para contadores</label>
+      </span>
+      <span class="my-2" style="width: 100%">
+        Oids para niveles de toner
+      </span>
+    </div>
+  </form>
+</p-panel>
+
