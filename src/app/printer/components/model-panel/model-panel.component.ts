@@ -22,9 +22,9 @@ export class ModelPanelComponent{
 
 
   modelForm: FormGroup = this.fb.group({
-    brandName: ['', [Validators.required]],
-    modelName: ['', [Validators.required]],
-    selectedType: ['monocromatico'],
+    brand: ['', [Validators.required]],
+    name: ['', [Validators.required]],
+    type: ['monocromatico'],
     countOids: this.fb.array([]),
     levelOids: this.fb.array([])
   })

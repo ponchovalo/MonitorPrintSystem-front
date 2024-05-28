@@ -34,6 +34,7 @@ export class PrinterModelListComponent implements OnInit{
   cerrarDialog(event:any){
     this.visible = event;
     console.log("execute")
+    this.getModelList();
   }
 
   getModelList(){

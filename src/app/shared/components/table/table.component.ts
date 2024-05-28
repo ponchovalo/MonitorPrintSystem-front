@@ -27,6 +27,16 @@ export class TableComponent implements OnInit{
     }
   }
 
+  getElement(element: PrinterModel){
+    console.log(element)
+  }
+  editElement(element: PrinterModel){
+    console.log(element._id)
+  }
+  deleteElement(element: PrinterModel){
+    console.log(element)
+  }
+
 
 
 }

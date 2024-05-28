@@ -8,9 +8,29 @@
       <tr>
           <td *ngFor="let c of elements">{{item[c.field]}}</td>
           <td>
-            <span>
-                
-            </span>
+            <div class="flex gap-1">
+                <button
+                    (click)="getElement(item)" 
+                    pButton pRipple 
+                    type="button" 
+                    icon="pi pi-info-circle" 
+                    class="p-button-rounded p-button-text p-button-primary">
+                </button>
+                <button 
+                    (click)="editElement(item)"
+                    pButton pRipple 
+                    type="button" 
+                    icon="pi pi-pencil" 
+                    class="p-button-rounded p-button-text p-button-success">
+                </button>
+                <button 
+                    (click)="deleteElement(item)"
+                    pButton pRipple 
+                    type="button" 
+                    icon="pi pi-times" 
+                    class="p-button-rounded p-button-text p-button-danger">
+                </button>
+            </div>
           </td>
       </tr>
   </ng-template>

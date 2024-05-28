@@ -30,6 +30,12 @@ export class PrinterService {
     let url: string = `${this.urlBase}/printer-model`;
     return this.http.post<PrinterModel>(url, model);
   }
+  updatePrinterModel(){
+
+  }
+  deletePrinterModelo(id: string):Observable<PrinterModel>{
+    return this.http.delete<PrinterModel>(`${this.urlBase}/printer-model/${id}`);
+  }
 
 
 

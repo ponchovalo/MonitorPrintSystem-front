@@ -13,24 +13,24 @@
     <div class="formgrid grid mt-4">
       <div class="field col-12 md:col-4">
         <p-floatLabel>
-          <input pInputText id="brand" [style]="{'minWidth':'100%'}" formControlName="brandName"/>
+          <input pInputText id="brand" [style]="{'minWidth':'100%'}" formControlName="brand"/>
           <label for="brand">Marca</label>
         </p-floatLabel>
       </div>
       <div class="field col-12 md:col-4">
         <p-floatLabel>
-          <input pInputText id="model" [style]="{'minWidth':'100%'}" formControlName="modelName"/>
+          <input pInputText id="model" [style]="{'minWidth':'100%'}" formControlName="name"/>
           <label for="model">Modelo</label>
         </p-floatLabel>
       </div>
       <div class="formgroup-inline col-12 md:col-4 flex align-items-center">
           <div class="field-radiobutton">
             <label for=""><strong>Tipo: </strong></label>
-            <p-radioButton name="selectedType" formControlName="selectedType" value="monocromatico" inputId="mono" />
+            <p-radioButton name="type" formControlName="type" value="monocromatico" inputId="mono" />
             <label for="mono">Blanco y Negro</label>
           </div>
           <div class="field-radiobutton">
-            <p-radioButton name="selectedType" formControlName="selectedType" value="color" inputId="color" />
+            <p-radioButton name="type" formControlName="type" value="color" inputId="color" />
             <label for="color"> Color </label>
           </div>
       </div>
