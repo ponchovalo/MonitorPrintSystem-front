@@ -9,8 +9,12 @@ import { PrinterModel } from '../../interfaces/printer-model.inteface';
 })
 export class PrinterModelListComponent implements OnInit{
 
+  visible: boolean = false;
+
   columnTitles: string[] = ['Marca', 'Modelo', 'Tipo', 'Opciones'];
   modelList: PrinterModel[] = [];
+
+  typeTable: string = 'tableModel'
 
 
 
@@ -24,9 +28,18 @@ export class PrinterModelListComponent implements OnInit{
     this.getModelList();
   }
 
+  showDialog(){
+    this.visible = true;
+  }
+  cerrarDialog(event:any){
+    this.visible = event;
+    console.log("execute")
+  }
+
   getModelList(){
     this.printerService.getPrinterModels().subscribe(data => {
-      this.modelList = this.modelList;
+      console.log(data)
+      this.modelList = data;
     })
   }
 

@@ -11,6 +11,7 @@ import { PrintersListComponent } from './pages/printers-list/printers-list.compo
 import { PrinterPanelComponent } from './components/printer-panel/printer-panel.component';
 import { PrinterModelListComponent } from './pages/printer-model-list/printer-model-list.component';
 import { ModelPanelComponent } from './components/model-panel/model-panel.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -28,7 +29,8 @@ import { ModelPanelComponent } from './components/model-panel/model-panel.compon
     CommonModule,
     PrinterRoutingModule,
     SharedModule,
-    PrimeNgModule
+    PrimeNgModule,
+    ReactiveFormsModule
   ]
 })
 export class PrinterModule { }

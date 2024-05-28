@@ -1,62 +1,121 @@
 <p-panel>
-  <ng-template pTemplate="header">
+  
+    <ng-template pTemplate="header">
       <div class="flex align-items-center gap-2">
-          <span class="font-bold">
-              Nuevo Modelo
-          </span>
+        <span class="font-bold">
+          Nuevo Modelo
+        </span>
       </div>
-  </ng-template>
-  <ng-template pTemplate="footer">
-    <div class="flex flex-wrap align-items-center justify-content-end gap-4">
-        <div class="flex align-items-center gap-4">
-            <p-button icon="pi pi-check" rounded="true" outlined="true" label="Guardar" severity="primary"/>
-            <p-button icon="pi pi-times" rounded="true" outlined="true" label="Cancelar" severity="danger"/>
-        </div>
-    </div>
-  </ng-template>
+    </ng-template>
 
-  <form >
-    <div class="flex flex-wrap justify-content-center my-4 mx-1 gap-2">
-      <span class="my-2" style="width: 100%">
+  <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" id="modelForm">
+
+    <div class="formgrid grid mt-4">
+      <div class="field col-12 md:col-4">
         <p-floatLabel>
-          <input pInputText id="brand" [style]="{'minWidth':'100%'}"/>
+          <input pInputText id="brand" [style]="{'minWidth':'100%'}" formControlName="brandName"/>
           <label for="brand">Marca</label>
         </p-floatLabel>
-      </span>
-      <span class="my-2" style="width: 100%">
+      </div>
+      <div class="field col-12 md:col-4">
         <p-floatLabel>
-          <input pInputText id="model" [style]="{'minWidth':'100%'}"/>
+          <input pInputText id="model" [style]="{'minWidth':'100%'}" formControlName="modelName"/>
           <label for="model">Modelo</label>
         </p-floatLabel>
-      </span>
-      <div class="flex flex-wrap gap-3">
-        <div class="flex align-items-center">
-            <p-radioButton
-                name="type"
-                value="monocromatico"
-                inputId="ingredient1" />
-            <label for="ingredient1" class="ml-2">
-                Blanco y Negro
-            </label>
-        </div>
-
-        <div class="flex align-items-center">
-            <p-radioButton
-                name="type"
-                value="color"
-                inputId="ingredient2" />
-            <label for="ingredient2" class="ml-2">
-                Color
-            </label>
-        </div>
       </div>
-      <span class="my-2" style="width: 100%">
-        <label for="">Oids para contadores</label>
-      </span>
-      <span class="my-2" style="width: 100%">
-        Oids para niveles de toner
-      </span>
+      <div class="formgroup-inline col-12 md:col-4 flex align-items-center">
+          <div class="field-radiobutton">
+            <label for=""><strong>Tipo: </strong></label>
+            <p-radioButton name="selectedType" formControlName="selectedType" value="monocromatico" inputId="mono" />
+            <label for="mono">Blanco y Negro</label>
+          </div>
+          <div class="field-radiobutton">
+            <p-radioButton name="selectedType" formControlName="selectedType" value="color" inputId="color" />
+            <label for="color"> Color </label>
+          </div>
+      </div>
+
     </div>
+
+    <div class="grid justify-content-between align-items-center">
+        <div class="col-12 md:col-6">
+
+          <div class="flex flex-wrap align-items-center justify-content-between gap-4">
+            <h4>Oid Para Contadores</h4>
+            <div class="flex align-items-center gap-4">
+              <p-button icon="pi pi-plus" [style]="{height: '25px', width: '25px'}" size="small" rounded="true"
+                outlined="true" severity="primary" (click)=" addCountOids()" />
+            </div>
+          </div>
+
+          <div formArrayName="countOids">
+            <div *ngFor="let oid of countOids.controls; let i = index">
+              <div [formGroupName]="i" class="flex flex-wrap justify-content-between my-1 gap-2">
+                <span class="my-2" style="width: 40%">
+                  <p-floatLabel>
+                    <input pInputText formControlName="name" id="name" [style]="{'minWidth':'100%'}" />
+                    <label for="name">Nombre</label>
+                  </p-floatLabel>
+                </span>
+                <span class="my-2" style="width: 40%">
+                  <p-floatLabel>
+                    <input pInputText formControlName="oid" id="oid" [style]="{'minWidth':'100%'}" />
+                    <label for="oid">OID</label>
+                  </p-floatLabel>
+                </span>
+                <span class="flex align-items-center justify-content-end my-1">
+                  <p-button icon="pi pi-times" [style]="{height: '25px', width: '25px'}" size="small" rounded="true"
+                    outlined="true" severity="danger" (click)=" removeCountOid(i)" />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-12 md:col-6">
+
+          <div class="flex flex-wrap align-items-center justify-content-between gap-4">
+            <h4>Oid Para Niveles de Toner</h4>
+            <div class="flex align-items-center gap-4">
+              <p-button icon="pi pi-plus" [style]="{height: '25px', width: '25px'}" size="small" rounded="true"
+                outlined="true" severity="primary" (click)=" addLevelOids()" />
+            </div>
+          </div>
+
+          <div formArrayName="levelOids">
+            <div *ngFor="let oid of levelOids.controls; let i = index">
+              <div [formGroupName]="i" class="flex flex-wrap justify-content-between my-1 gap-2">
+                <span class="my-2" style="width: 40%;">
+                  <p-floatLabel>
+                    <input pInputText formControlName="name" id="name" [style]="{'minWidth':'100%'}" />
+                    <label for="name">Nombre</label>
+                  </p-floatLabel>
+                </span>
+                <span class="my-2" style="width: 40%">
+                  <p-floatLabel>
+                    <input pInputText formControlName="oid" id="oid" [style]="{'minWidth':'100%'}" />
+                    <label for="oid">OID</label>
+                  </p-floatLabel>
+                </span>
+                <span class="flex align-items-center justify-content-center my-1" >
+                  <p-button icon="pi pi-times" [style]="{height: '25px', width: '25px'}" size="small" rounded="true"
+                    outlined="true" severity="danger" (click)=" removeLevelOid(i)" />
+                </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      
+    </div>
+    <hr>
+    <div class="flex flex-wrap align-items-center justify-content-end gap-4">
+      <div class="flex align-items-center gap-4">
+        <p-button icon="pi pi-check" rounded="true" outlined="true" label="Guardar" severity="primary" type="submit"/>
+        <p-button icon="pi pi-times" rounded="true" outlined="true" label="Cancelar" severity="danger" (click)="onCancel()" />
+      </div>
+    </div>
+
   </form>
 </p-panel>
-

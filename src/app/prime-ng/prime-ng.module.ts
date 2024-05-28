@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -26,7 +27,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     InputTextModule,
     DropdownModule,
     TableModule,
-    RadioButtonModule
+    RadioButtonModule,
+    DialogModule
   ],
   exports: [
     CardModule,
@@ -38,7 +40,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     InputTextModule,
     DropdownModule,
     TableModule,
-    RadioButtonModule
+    RadioButtonModule,
+    DialogModule
   ]
 })
 export class PrimeNgModule { }

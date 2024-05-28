@@ -7,7 +7,7 @@
         </span>
       </div>
       <div class="flex align-items-center gap-2">
-          <p-button icon="pi pi-plus" rounded="true" outlined="true" label="Nuevo" severity="primary"/>
+          <p-button icon="pi pi-plus" rounded="true" outlined="true" label="Nuevo" severity="primary" (click)="showDialog()"/>
       </div>
     </div>
   </ng-template>
@@ -17,11 +17,13 @@
   </div>
 
   <ng-template #table>
-    <app-table [columnTitles]="columnTitles"></app-table>
+    <app-table [columnTitles]="columnTitles" [data]="modelList" [typeTable]="typeTable"></app-table>
   </ng-template>
 
 </p-panel>
 
-<div class="container-dialog">
-  <model-panel></model-panel>
+<div>
+  <p-dialog  [(visible)]="visible" [style]="{ width: '60rem' }">
+    <model-panel (closeDialog)="cerrarDialog($event)" ></model-panel>
+  </p-dialog>
 </div>
