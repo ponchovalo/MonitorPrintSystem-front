@@ -12,6 +12,7 @@ import { PrinterPanelComponent } from './components/printer-panel/printer-panel.
 import { PrinterModelListComponent } from './pages/printer-model-list/printer-model-list.component';
 import { ModelPanelComponent } from './components/model-panel/model-panel.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TableComponent } from './components/table/table.component';
 
 
 
@@ -23,14 +24,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     PrintersListComponent,
     PrinterPanelComponent,
     PrinterModelListComponent,
-    ModelPanelComponent
+    ModelPanelComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
     PrinterRoutingModule,
     SharedModule,
     PrimeNgModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableComponent
   ]
 })
 export class PrinterModule { }

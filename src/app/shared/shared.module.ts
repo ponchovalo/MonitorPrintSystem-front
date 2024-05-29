@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { TableComponent } from '../printer/components/table/table.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 
@@ -10,8 +9,7 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 @NgModule({
   declarations: [
     HeaderComponent,
-    SidebarComponent,
-    TableComponent
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -19,8 +17,7 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
   ],
   exports: [
     HeaderComponent,
-    SidebarComponent,
-    TableComponent
+    SidebarComponent
   ]
 })
 export class SharedModule { }

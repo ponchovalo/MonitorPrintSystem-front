@@ -12,7 +12,7 @@ export class ModelPanelComponent{
 
 
   @Output()
-  closeDialog = new EventEmitter<boolean>()
+  closeDialog = new EventEmitter()
 
 
   constructor(
@@ -81,7 +81,7 @@ export class ModelPanelComponent{
       this.removeLevelOid(i - 1)
     }
     this.modelForm.reset();
-    this.closeDialog.emit(false)
+    this.closeDialog.emit()
   }
 
   

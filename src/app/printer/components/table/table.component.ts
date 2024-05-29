@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { PrinterModel } from '../../interfaces/printer-model.inteface';
 import { PrinterService } from '../../services/printer.service';
-import { ColumnTable } from '../../interfaces/column-table.interface';
 
 @Component({
   selector: 'app-table',
@@ -14,7 +13,8 @@ export class TableComponent implements OnInit{
   @Input() tableType!: string;
 
   data!: PrinterModel[];
-  columns!: ColumnTable[];
+  captions: any[] = [];
+  columns: any[] = [];
 
   constructor(
     private confirmationService: ConfirmationService,
@@ -32,12 +32,8 @@ export class TableComponent implements OnInit{
     switch(tipo){
       case 'modelTable':
         this.getModels();
-        this.columns = [
-          {caption: "Marca", column: "brand"},
-          {caption: "Modelo", column: "name"},
-          {caption: "Tipo", column: "type"},
-          {caption: "Accion", column: ""},
-        ]
+        this.columns = [ {column: 'brand'}, {column: 'name'}, {column: 'type'} ];
+        this.captions = [ {caption: 'Marca'}, {caption:'Modelo'}, {caption:'Tipo'}, {caption:'Acciones'} ];
         break
       default:
         break
@@ -84,7 +80,10 @@ export class TableComponent implements OnInit{
     })
   }
   ///---------------------------------------------------------------------------------------------------------------------///
-
+  cerrarDialog(){
+    console.log("execute")
+    this.loadData(this.tableType);
+  }
   
 
 
