@@ -13,8 +13,8 @@ export class PrinterService {
 
   constructor(private http: HttpClient) { }
 
-  getPrintersLIst(): Observable<PrinterDetail> {
-    return this.http.get<PrinterDetail>(`${this.urlBase}/printer`);
+  getPrintersList(): Observable<PrinterDetail[]> {
+    return this.http.get<PrinterDetail[]>(`${this.urlBase}/printer`);
   }
 
   getPrintersDetails() : Observable<PrinterDetail[]>{

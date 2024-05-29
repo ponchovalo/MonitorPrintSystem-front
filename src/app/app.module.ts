@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     PrimeNgModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [MessageService, ConfirmationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

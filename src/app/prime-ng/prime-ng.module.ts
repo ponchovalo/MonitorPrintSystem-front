@@ -12,6 +12,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 
 
@@ -28,7 +30,10 @@ import { DialogModule } from 'primeng/dialog';
     DropdownModule,
     TableModule,
     RadioButtonModule,
-    DialogModule
+    DialogModule,
+    ConfirmDialogModule,
+    ToastModule
+    
   ],
   exports: [
     CardModule,
@@ -41,7 +46,9 @@ import { DialogModule } from 'primeng/dialog';
     DropdownModule,
     TableModule,
     RadioButtonModule,
-    DialogModule
+    DialogModule,
+    ConfirmDialogModule,
+    ToastModule
   ]
 })
 export class PrimeNgModule { }

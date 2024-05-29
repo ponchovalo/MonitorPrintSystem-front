@@ -14,10 +14,7 @@ export class PrinterModelListComponent implements OnInit{
   columnTitles: string[] = ['Marca', 'Modelo', 'Tipo', 'Opciones'];
   modelList: PrinterModel[] = [];
 
-  typeTable: string = 'tableModel'
-
-
-
+  tableType: string = 'modelTable'
 
   constructor(
     private printerService: PrinterService,
@@ -25,7 +22,7 @@ export class PrinterModelListComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.getModelList();
+    
   }
 
   showDialog(){
@@ -42,6 +39,10 @@ export class PrinterModelListComponent implements OnInit{
       console.log(data)
       this.modelList = data;
     })
+  }
+
+  raloadOnChange(){
+    this.getModelList()
   }
 
 }

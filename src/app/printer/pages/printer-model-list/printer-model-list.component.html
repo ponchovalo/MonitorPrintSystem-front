@@ -12,13 +12,9 @@
     </div>
   </ng-template>
 
-  <div *ngIf="modelList.length === 0; else table">
-    <span>No hay elementos</span>
+  <div>
+    <app-table [tableType]="tableType"></app-table>
   </div>
-
-  <ng-template #table>
-    <app-table [columnTitles]="columnTitles" [data]="modelList" [typeTable]="typeTable"></app-table>
-  </ng-template>
 
 </p-panel>
 
