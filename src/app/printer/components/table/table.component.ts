@@ -27,7 +27,6 @@ export class TableComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-
   }
 
    ///-Acciones del CRUD--------------------------------------------------------------------------------------------------///
@@ -35,8 +34,8 @@ export class TableComponent implements OnInit{
     console.log(id)
   }
   openDialogEdit(item: any){
-    console.log(item)
-    console.log(item[Object.keys(item)[1]])
+    this.visible = true;
+    this.selectedItem = item;
   }
   closeDialogEdit(accion: string){
     this.visible = false

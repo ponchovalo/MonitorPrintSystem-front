@@ -3,7 +3,7 @@
 <p-confirmDialog />
 
 <p-dialog  [(visible)]="visible" [style]="{ width: '60rem' }">
-    <model-panel *ngIf="visible" (closeDialog)="closeDialogEdit($event)" ></model-panel>
+    <model-panel *ngIf="visible" (closeDialog)="closeDialogEdit($event)" [modelSelected]="selectedItem"></model-panel>
 </p-dialog>
 
 <p-table [value]="tableData" [tableStyle]="{ 'min-width': '50rem', 'max-width': '100%' }">
