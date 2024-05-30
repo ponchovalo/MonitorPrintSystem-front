@@ -1,32 +1,36 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { PrinterService } from '../../services/printer.service';
-import { PrinterModel } from '../../interfaces/printer-model.inteface';
+import { MessageService } from 'primeng/api';
+import { Observable, catchError, of } from 'rxjs';
 
 @Component({
   selector: 'model-panel',
   templateUrl: './model-panel.component.html',
   styles: ``
 })
-export class ModelPanelComponent{
+export class ModelPanelComponent implements OnInit{
 
 
   @Output()
-  closeDialog = new EventEmitter()
+  closeDialog = new EventEmitter<string>()
 
 
   constructor(
     private fb: FormBuilder,
-    private printerService: PrinterService
+    private printerService: PrinterService,
+    private messageService: MessageService
   ){}
 
+  ngOnInit(): void {
+  }
 
   modelForm: FormGroup = this.fb.group({
     brand: ['', [Validators.required]],
     name: ['', [Validators.required]],
     type: ['monocromatico'],
     countOids: this.fb.array([]),
-    levelOids: this.fb.array([])
+    levelOids: this.fb.array([]), 
   })
 
   get countOids(): FormArray{
@@ -64,26 +68,35 @@ export class ModelPanelComponent{
   }
 
   onSubmit(){
-    console.log(this.modelForm.valid)
-    if(this.modelForm.valid){
-      this.printerService.createPrinterModel(this.modelForm.value).subscribe(data =>{
-        console.log(data)
-      })
-      this.onCancel();
+    console.log(this.modelForm.controls['countOids'].value.length > 0)
+    if(this.modelForm.valid === true){
+      if(this.modelForm.controls['countOids'].value.length > 0 && this.modelForm.controls['levelOids'].value.length){
+          this.printerService.createPrinterModel(this.modelForm.value)
+        .pipe(
+          catchError(this.handleError<string>())
+        )
+        .subscribe(data =>{  
+          this.closeDialog.emit("Guardar");
+        })
+      }else{
+        this.messageService.add({ severity: 'error', summary: 'Accion denegada', detail: 'Agregue Oids' })
+      }
+    }else {
+      this.messageService.add({ severity: 'error', summary: 'Accion denegada', detail: 'Faltan campos por llenar' })
+      
     }
   }
 
   onCancel(){
-    for (let i = this.countOids.length; i > 0; i--) {
-      this.removeCountOid(i - 1)
-    }
-    for (let i = this.levelOids.length; i > 0; i--) {
-      this.removeLevelOid(i - 1)
-    }
-    this.modelForm.reset();
-    this.closeDialog.emit()
+    this.closeDialog.emit("Cancelar")
   }
 
-  
+  handleError<T>(result?: T) {
+    return (error: any): Observable<T> => {
+      this.messageService.add({ severity: 'error', summary: 'Accion denegada', detail: `${error.error.message}` })
+      return of(result as T);
+    };
+  }
 
+ 
 }

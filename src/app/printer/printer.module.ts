@@ -32,8 +32,7 @@ import { TableComponent } from './components/table/table.component';
     PrinterRoutingModule,
     SharedModule,
     PrimeNgModule,
-    ReactiveFormsModule,
-    TableComponent
+    ReactiveFormsModule
   ]
 })
 export class PrinterModule { }

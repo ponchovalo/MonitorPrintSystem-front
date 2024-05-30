@@ -16,18 +16,20 @@
           <input pInputText id="brand" [style]="{'minWidth':'100%'}" formControlName="brand"/>
           <label for="brand">Marca</label>
         </p-floatLabel>
+        <span *ngIf="!modelForm.controls['brand'].valid && modelForm.controls['brand'].touched" style="color: red;">Este campo no pude estar vacio</span>
       </div>
       <div class="field col-12 md:col-4">
         <p-floatLabel>
           <input pInputText id="model" [style]="{'minWidth':'100%'}" formControlName="name"/>
           <label for="model">Modelo</label>
         </p-floatLabel>
+        <span *ngIf="!modelForm.controls['name'].valid && modelForm.controls['name'].touched" style="color: red;">El campo no puede estar vacio</span>
       </div>
       <div class="formgroup-inline col-12 md:col-4 flex align-items-center">
           <div class="field-radiobutton">
             <label for=""><strong>Tipo: </strong></label>
-            <p-radioButton name="type" formControlName="type" value="monocromatico" inputId="mono" />
-            <label for="mono">Blanco y Negro</label>
+            <p-radioButton name="type" formControlName="type" value="monocromatico" inputId="monocromatico" />
+            <label for="monocromatico">Blanco y Negro</label>
           </div>
           <div class="field-radiobutton">
             <p-radioButton name="type" formControlName="type" value="color" inputId="color" />

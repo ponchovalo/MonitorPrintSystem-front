@@ -14,6 +14,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
 
 
 
@@ -32,7 +33,8 @@ import { ToastModule } from 'primeng/toast';
     RadioButtonModule,
     DialogModule,
     ConfirmDialogModule,
-    ToastModule
+    ToastModule,
+    MessagesModule
     
   ],
   exports: [
@@ -48,7 +50,8 @@ import { ToastModule } from 'primeng/toast';
     RadioButtonModule,
     DialogModule,
     ConfirmDialogModule,
-    ToastModule
+    ToastModule,
+    MessagesModule
   ]
 })
 export class PrimeNgModule { }

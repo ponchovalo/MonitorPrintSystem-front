@@ -10,67 +10,48 @@ import { PrinterService } from '../../services/printer.service';
 })
 export class TableComponent implements OnInit{
 
-  @Input() tableType!: string;
+  visible: boolean = false;
 
-  data!: PrinterModel[];
-  captions: any[] = [];
-  columns: any[] = [];
+  selectedItem!: any;
+
+  @Input() tableType!: string;
+  @Input() tableData!: PrinterModel[];
+  @Input() tableCaptions!: any[];
+  @Input() tableColumns!: any[];
+
+  @Output() deleteItem = new EventEmitter<string>();
 
   constructor(
     private confirmationService: ConfirmationService,
-    private messageService: MessageService,
-    private printerService: PrinterService
+    private messageService: MessageService
   ){}
 
   ngOnInit(): void {
-    console.log(this.tableType)
-    this.loadData(this.tableType)
-  }
 
-  // funcion para cargar data segun el tipo
-  loadData(tipo: string){
-    switch(tipo){
-      case 'modelTable':
-        this.getModels();
-        this.columns = [ {column: 'brand'}, {column: 'name'}, {column: 'type'} ];
-        this.captions = [ {caption: 'Marca'}, {caption:'Modelo'}, {caption:'Tipo'}, {caption:'Acciones'} ];
-        break
-      default:
-        break
-    }
   }
-
-  //funciones para cargar los datos
-  getModels(){
-    this.printerService.getPrinterModels().subscribe(data => {
-      this.data = data;
-    })
-  }
-
 
    ///-Acciones del CRUD--------------------------------------------------------------------------------------------------///
-  getElement(element: PrinterModel){
-    console.log(element)
+  getElement(id: string){
+    console.log(id)
   }
-  editElement(element: PrinterModel){
-    console.log(element._id)
+  openDialogEdit(item: any){
+    console.log(item)
+    console.log(item[Object.keys(item)[1]])
   }
-  deleteElement(id: string){
-    this.printerService.deletePrinterModelo(id).subscribe(data => {
-      this.loadData(this.tableType)
-    })
+  closeDialogEdit(accion: string){
+    this.visible = false
   }
-  confirmDelete(event: Event, id: string){
+  confirmDelete(event: Event, item: any){
     this.confirmationService.confirm({
       target: event.target as EventTarget,
-      message: 'Deseas eliminar el modelo',
+      message: `Deseas eliminar el modelo ${item['name']}`,
       header: 'Confirmacion',
       icon: 'pi pi-exclamation-triangle',
       acceptIcon:"none",
       rejectIcon:"none",
       rejectButtonStyleClass:"p-button-text",
       accept: () => {
-        this.deleteElement(id);
+        this.deleteItem.emit(item._id)
         this.messageService.add({ severity: 'info', summary: 'Confirmado', detail: 'Has eliminado el modelo' });
       },
       reject: () => {
@@ -79,11 +60,9 @@ export class TableComponent implements OnInit{
 
     })
   }
+  
   ///---------------------------------------------------------------------------------------------------------------------///
-  cerrarDialog(){
-    console.log("execute")
-    this.loadData(this.tableType);
-  }
+
   
 
 

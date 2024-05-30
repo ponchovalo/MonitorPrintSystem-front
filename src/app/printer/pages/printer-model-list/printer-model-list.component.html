@@ -13,13 +13,19 @@
   </ng-template>
 
   <div>
-    <app-table [tableType]="tableType"></app-table>
+    <app-table 
+      [tableType]="tableType"
+      [tableData]="tableData"
+      [tableCaptions]="tableCaptions"
+      [tableColumns]="tableColumns"
+      (deleteItem)="deleteItem($event)"
+    ></app-table>
   </div>
 
 </p-panel>
 
 <div>
   <p-dialog  [(visible)]="visible" [style]="{ width: '60rem' }">
-    <model-panel (closeDialog)="cerrarDialog()" ></model-panel>
+    <model-panel *ngIf="visible" (closeDialog)="closeDialog($event)" ></model-panel>
   </p-dialog>
 </div>
